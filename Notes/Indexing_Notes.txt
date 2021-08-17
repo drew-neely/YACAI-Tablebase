@@ -1,0 +1,14 @@
+Indexing Notes
+King index - 462 possible values (K on 10 possible squares)
+	n-spaces - corespond to each king index
+		sntmK may be on different squares denying stm men from squares:
+		
+		 id  | (6 groups)            | queen | bishop | rook | knight | pawn
+		------------------------------------------------------------------------
+		  0  | 4x  corner            |   3   |   1    |   2  |   2    |  X 
+		  1  | 8x  edge (corner adj) |   5   |   2    |   3  |   3    |  X 
+		  2  | 16x edge              |   5   |   2    |   3  |   4    |  X 
+		  3  | 4x  inner corner      |   8   |   4    |   4  |   4    |  X 
+		  4  | 16x inner edge        |   8   |   4    |   4  |   6    |  X 
+		  5  | 16x middle            |   8   |   4    |   4  |   8    |  X 
+
