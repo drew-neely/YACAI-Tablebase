@@ -9,9 +9,10 @@ class BaseTablebase(BigArray) :
 
 	def __init__(self, comp) :
 		self.comp = comp
+		self.name = comp.comp_str
 		if self.name in loaded_tables :
 			raise ValueError(f"Tablebase '{comp.comp_str}' has already been loaded")
-		super().__init__(comp.comp_str, 20000, 1) # !!! # These numbers are wrong
+		super().__init__(comp.comp_str, 57287, 1) # !!! # These numbers are wrong
 		# self.table = BigArray(self.name, self.len, self.bytes_per_entry)
 		loaded_tables[self.name] = self
 

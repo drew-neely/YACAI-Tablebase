@@ -1,16 +1,16 @@
 from timer import Timer
 from big_array import BigArray
-from tablebase import Tablebase
+from tablebase_pawnless import PawnlessTablebase
 from indexing import get_kings_index_np
 import chess
 import unmove_generator # add unmove functions to chess.Board
 from composition import Composition
 
 
-class KQk(Tablebase) :
+class KQk(PawnlessTablebase) :
 
 	def __init__(self) :
-		super().__init__(Composition.get_composition("KQk"), 20000, )
+		super().__init__(Composition.get_composition("KQk"))
 
 	def build(self) :
 		if not self.writable :

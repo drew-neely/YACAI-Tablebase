@@ -1,5 +1,6 @@
 from os import path
 from timer import Timer
+import os
 
 """
 All data is stored little-endian (easier to use on intel chips)
@@ -29,17 +30,18 @@ class BigArray :
 			with open(name, 'rb') as file :
 				head = file.read(128)
 				self.size = int.from_bytes(head[0:8], 'little')
-				self.bytes_per_entry = head[8]
+				assert self.bytes_per_entry == head[8]
 				self.data = file.read()
 		else : # create database
 			if size == None :
 				raise ValueError("size must be specified when making an array")
 			self.writable = True
 			self.size = size
-			self.bytes_per_entry = bytes_per_entry
 			self.data = bytearray(size * bytes_per_entry)
 
 	def flush(self) :
+		if not os.path.isdir('data/'):
+			os.mkdir('data/')
 		if not self.writable :
 			raise Exception("Attempting flush read-only BigArray: " + self.name)
 		head = bytearray(128)
